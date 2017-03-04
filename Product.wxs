@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Wix xmlns="http://schemas.microsoft.com/wix/2006/wi">
+  <Product Id="fac404ec-e5f2-4b80-82b9-622480c795ad" Language="1033" Manufacturer="My Company" Name="My Proudct" UpgradeCode="fac404ec-e5f2-4b80-82b9-622480c795ad" Version="1.0.0.0">
+    <Package Compressed="yes" InstallerVersion="200" />
+    <Feature Id="ProductFeature" Level="1" Title="My Feature Title">
+      <ComponentGroupRef Id="ProductComponents" />
+    </Feature>
+    <MediaTemplate EmbedCab="yes" />
+  </Product>
+  <Fragment>
+    <Directory Id="TARGETDIR" Name="SourceDir">
+      <Directory Id="ProgramFilesFolder">
+        <Directory Id="ManufacturerFolder" Name="!(bind.property.Manufacturer)">
+          <Directory Id="INSTALLFOLDER" Name="!(bind.property.ProductName)"></Directory>
+        </Directory>
+      </Directory>
+    </Directory>
+  </Fragment>
+</Wix>

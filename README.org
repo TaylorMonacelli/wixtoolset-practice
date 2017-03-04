@@ -1,0 +1,19 @@
+* Learning wix
+** How to get runnning
+
+run default task
+#+BEGIN_SRC powershell
+invoke-psake -notr -nologo
+#+END_SRC
+
+or
+#+BEGIN_SRC powershell
+invoke-psake -notr -nologo -tasklist msi120
+#+END_SRC
+
+
+** Copying this guys stuff
+
+Copying this guys stuff:
+https://github.com/sidiandi/hagen/tree/1dcfdc45eaa45b630d595134f38f899f083ce46e/setup
+
