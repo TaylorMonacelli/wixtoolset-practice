@@ -5,7 +5,6 @@ Task msi120 -Depends `
   CheckInstalled10, `
   Setup10, `
   Harvest90, `
-  GitResetTempWorkaround, `
   Candle20, `
   Light30, `
   CheckInstalled10, `
