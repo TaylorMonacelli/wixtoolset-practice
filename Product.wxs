@@ -2,7 +2,9 @@
 <Wix xmlns="http://schemas.microsoft.com/wix/2006/wi">
   <Product Id="*" Language="1033" Manufacturer="PUT-COMPANY-NAME-HERE" Name="PUT-PRODUCT-NAME-HERE" UpgradeCode="PUT-GUID-HERE" Version="1.0.0.0">
     <Package Compressed="yes" InstallerVersion="200" />
-    <Feature Id="ProductFeature" Level="1" Title="PUT-FEATURE-TITLE-HERE" />
+    <Feature Id="ProductFeature" Level="1" Title="PUT-FEATURE-TITLE-HERE">
+      <ComponentGroupRef Id="ProductComponents" />
+    </Feature>
     <MediaTemplate EmbedCab="yes" />
   </Product>
 </Wix>
