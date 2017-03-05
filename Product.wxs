@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="utf-8"?>
 <Wix xmlns="http://schemas.microsoft.com/wix/2006/wi">
-  <Product Id="fac404ec-e5f2-4b80-82b9-622480c795ad" Language="1033" Manufacturer="My Company" Name="My Proudct" UpgradeCode="fac404ec-e5f2-4b80-82b9-622480c795ad" Version="1.0.0.0">
+  <Product Id="*" Language="1033" Manufacturer="PUT-COMPANY-NAME-HERE" Name="PUT-PRODUCT-NAME-HERE" UpgradeCode="PUT-GUID-HERE" Version="1.0.0.0">
     <Package Compressed="yes" InstallerVersion="200" />
-    <Feature Id="ProductFeature" Level="1" Title="My Feature Title">
+    <Feature Id="ProductFeature" Level="1" Title="PUT-FEATURE-TITLE-HERE">
       <ComponentGroupRef Id="ProductComponents" />
     </Feature>
     <MediaTemplate EmbedCab="yes" />
