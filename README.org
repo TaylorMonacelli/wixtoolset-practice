@@ -1,4 +1,6 @@
 * Learning wix
+** TODO How can I automate crating Product.wxs.  Need to find right heat command, need xslt here?
+** TODO uninstall fails
 ** How to get runnning
 
 run default task
