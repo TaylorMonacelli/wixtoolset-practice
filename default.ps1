@@ -137,18 +137,6 @@ Task Harvest90 {
 	  -var var.BuildDirectory `
 	  -dr INSTALLFOLDER
 
-    heat dir mySource `
-	  -nologo `
-	  -srd `
-	  -var "var.BinDir" `
-	  -dr INSTALLFOLDER `
-	  -ag `
-	  -g1 `
-	  -sf `
-	  -srd `
-	  -template product `
-	  -out Product.wxs
-
     (Get-Content Product.wxs) |
     Where-Object {$_ -notlike '*Cabinet="product.cab"*'} |
     Set-Content Product.wxs
