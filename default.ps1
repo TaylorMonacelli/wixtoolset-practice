@@ -49,14 +49,14 @@ Task Install20 {
 
 Task TestInstalled {
     # FIXME: consider using pester here
-    $glob = "${env:SYSTEMDRIVE}/Program*/My Company/My Proudct/[12].txt"
+    $glob = "${env:SYSTEMDRIVE}/Program*/My Company/My Product/[12].txt"
     $c = (Get-ChildItem $glob -ea 0 | Select-Object -exp fullname | Measure-Object).Count
     Assert ($c -eq 2) "count of files installed should be 2"
 }
 
 Task CheckInstalled10 {
     # FIXME: (use pester?) here instead of manual check
-    $glob = "${env:SYSTEMDRIVE}/Program*/My Company/My Proudct/[12].txt"
+    $glob = "${env:SYSTEMDRIVE}/Program*/My Company/My Product/[12].txt"
     Get-ChildItem $glob -ea 0 | Select-Object -exp fullname
 }
 
@@ -143,7 +143,7 @@ Task Harvest90 {
 
     (Get-Content Product.wxs) -replace 'PUT-GUID-HERE', [guid]::NewGuid() `
 	  -replace 'PUT-COMPANY-NAME-HERE', 'My Company' `
-	  -replace 'PUT-PRODUCT-NAME-HERE', 'My Proudct' `
+	  -replace 'PUT-PRODUCT-NAME-HERE', 'My Product' `
 	  -replace 'PUT-FEATURE-TITLE-HERE', 'My Feature Title' `
 	  -replace 'PUT-GUID-HERE', [guid]::NewGuid() | Set-Content Product.wxs
 
@@ -179,7 +179,7 @@ Task Harvest80 {
 
     (Get-Content Product.wxs) -replace 'PUT-GUID-HERE', [guid]::NewGuid() `
 	  -replace 'PUT-COMPANY-NAME-HERE', 'My Company' `
-	  -replace 'PUT-PRODUCT-NAME-HERE', 'My Proudct' `
+	  -replace 'PUT-PRODUCT-NAME-HERE', 'My Product' `
 	  -replace 'PUT-FEATURE-TITLE-HERE', 'My Feature Title' `
 	  -replace 'PUT-GUID-HERE', [guid]::NewGuid() | Set-Content Product.wxs
 
@@ -203,7 +203,7 @@ Task Harvest70 {
 
     (Get-Content mySource.wxs) -replace 'PUT-GUID-HERE', [guid]::NewGuid() `
 	  -replace 'PUT-COMPANY-NAME-HERE', 'My Company' `
-	  -replace 'PUT-PRODUCT-NAME-HERE', 'My Proudct' `
+	  -replace 'PUT-PRODUCT-NAME-HERE', 'My Product' `
 	  -replace 'PUT-FEATURE-TITLE-HERE', 'My Feature Title' `
 	  -replace 'PUT-GUID-HERE', [guid]::NewGuid() | Set-Content mySource.wxs
 }
@@ -219,7 +219,7 @@ Task Harvest60 {
 
     (Get-Content mySource.wxs) -replace 'PUT-GUID-HERE', [guid]::NewGuid() `
 	  -replace 'PUT-COMPANY-NAME-HERE', 'My Company' `
-	  -replace 'PUT-PRODUCT-NAME-HERE', 'My Proudct' `
+	  -replace 'PUT-PRODUCT-NAME-HERE', 'My Product' `
 	  -replace 'PUT-FEATURE-TITLE-HERE', 'My Feature Title' `
 	  -replace 'PUT-GUID-HERE', [guid]::NewGuid() | Set-Content mySource.wxs
 }
@@ -237,7 +237,7 @@ Task Harvest50 {
 
     (Get-Content mySource.wxs) -replace 'PUT-GUID-HERE', [guid]::NewGuid() `
 	  -replace 'PUT-COMPANY-NAME-HERE', 'My Company' `
-	  -replace 'PUT-PRODUCT-NAME-HERE', 'My Proudct' `
+	  -replace 'PUT-PRODUCT-NAME-HERE', 'My Product' `
 	  -replace 'PUT-FEATURE-TITLE-HERE', 'My Feature Title' `
 	  -replace 'PUT-GUID-HERE', [guid]::NewGuid() | Set-Content mySource.wxs
 }
@@ -256,7 +256,7 @@ Task Harvest40 {
 
     (Get-Content mySource.wxs) -replace 'PUT-GUID-HERE', [guid]::NewGuid() `
 	  -replace 'PUT-COMPANY-NAME-HERE', 'My Company' `
-	  -replace 'PUT-PRODUCT-NAME-HERE', 'My Proudct' `
+	  -replace 'PUT-PRODUCT-NAME-HERE', 'My Product' `
 	  -replace 'PUT-FEATURE-TITLE-HERE', 'My Feature Title' `
 	  -replace 'PUT-GUID-HERE', [guid]::NewGuid() | Set-Content mySource.wxs
 }
