@@ -10,7 +10,7 @@ Task msi120 -Depends `
   Light30, `
   CheckInstalled10, `
   Install10, `
-  CheckInstalled10
+  TestInstalled
 
 Task msi110 -Depends Clean10, Setup10, Harvest90
 Task msi100 -Depends Clean10, Setup10, Harvest80, Candle20, Light30
@@ -46,6 +46,13 @@ Task Install20 {
         Write-Verbose $myMsi.ExitCode
         Write-Host "Install status: $lastExitCode"
     }
+}
+
+Task TestInstalled {
+    # FIXME: consider using pester here
+    $glob = "${env:SYSTEMDRIVE}/Program*/My Company/My Proudct/[12].txt"
+    $c = (Get-ChildItem $glob -ea 0 | Select-Object -exp fullname | Measure-Object).Count
+    Assert ($c -eq 2) "count of files installed should be 2"
 }
 
 Task CheckInstalled10 {
