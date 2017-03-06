@@ -1,4 +1,8 @@
 Task default -Depends msi120
+
+Task msiApache20 -Depends Get-Apache, Harvest90, Candle20, Light30, Apache10-Install, Confirm-Apache10-Install
+Task msiApache10 -Depends Get-Apache, Harvest90, Candle20, Light30
+
 Task msi120 -Depends `
   Clean10, `
   UnInstall10, `
@@ -22,6 +26,49 @@ Task msi40 -Depends Clean10, Setup10, Harvest30, Candle10, Light10
 Task msi30 -Depends Setup10, Harvest20, Candle10, Light10
 Task msi20 -Depends Setup10, Harvest10, Candle10, Light10
 Task msi10 -Depends Clean10, Setup10, Harvest10, Candle10, Light10
+
+function Get-InstalledList {
+    $list = @(
+        'HKLM:\Software\Microsoft\Windows\CurrentVersion\Uninstall'
+        ,'HKLM:\Software\Wow6432Node\Microsoft\Windows\CurrentVersion\Uninstall'
+    )
+    foreach ($key in $list) {
+        if(test-path $key){
+            Get-ItemProperty "${key}\*" |
+            Select-Object DisplayName, DisplayVersion, Publisher, InstallDate
+        }
+    }
+}
+
+Task Confirm-ApacheUnInstalled {
+    $result = (Get-InstalledList).DisplayName -Contains 'My Product'
+    Assert ($result -eq $false)
+}
+
+Task Apache10-UnInstall {
+    msiexec /L*v uninstall.log /x myInstaller.msi
+}
+
+Task Confirm-Apache10-Install {
+    $glob = "C:\Program Files*\My Company\My Product\Apache24\bin\httpd.exe"
+    $c = (Get-ChildItem $glob -ea 0 | Select-Object -exp fullname | Measure-Object).Count
+    Assert ($c -eq 1) "I cound't find $glob"
+}
+
+Task Apache10-Install {
+    msiexec /L*v install.log /i myInstaller.msi
+}
+
+Task Get-Apache {
+    $url = 's3://installer-bin.streambox.com/httpd-2.4.25-win64-VC14.zip'
+    $filename = $URL.Substring($URL.LastIndexOf("/") + 1)
+    if(!(test-path $filename)){
+        aws s3 cp --quiet --region us-east-1 $url .
+    }
+    if(!(test-path mySource)){
+        cmd /c 7z x -y -omySource $filename
+    }
+}
 
 Task TidyXML {
     tidy -xml --tidy-mark no --doctype strict --wrap-attributes false -q -i -wrap 1000 -m  Product.wxs
