@@ -29,22 +29,19 @@ Task TidyXML {
 
 
 Task GitResetTempWorkaround {
-    Exec {
-        Write-Host "FIXME: workaround flail in Product.wxs"
-        git checkout -- Product.wxs
-    }
+    Write-Host "FIXME: workaround flail in Product.wxs"
+    git checkout -- Product.wxs
 }
 
 Task Install20 {
-    Exec {
-        $msiexecd = Get-Process -Name 'msiexec'
-        msiexec /q /L*v myInstaller.log /i myInstaller.msi
-        $myMsi = Get-Process -Name 'msiexec' |
-        Where-Object { $_.Id -ne $msiexecd.Id }
-        $myMsi.WaitForExit()
-        Write-Verbose $myMsi.ExitCode
-        Write-Host "Install status: $lastExitCode"
-    }
+    $msiexecd = Get-Process -Name 'msiexec'
+    msiexec /q /L*v myInstaller.log /i myInstaller.msi
+    $myMsi = Get-Process -Name 'msiexec' |
+    Where-Object { $_.Id -ne $msiexecd.Id }
+    $myMsi.WaitForExit()
+    Write-Verbose $myMsi.ExitCode
+    Write-Host "Install status: $lastExitCode"
+
 }
 
 Task TestInstalled {
@@ -61,19 +58,16 @@ Task CheckInstalled10 {
 }
 
 Task UnInstall10 {
-    Exec {
-        msiexec /q /X myInstaller.msi /L*v myInstaller.log
-        # FIXME: checking exit code here is misleading/incorrect
-        Write-Host "Uninstall status: $lastExitCode"
-    }
+    msiexec /q /X myInstaller.msi /L*v myInstaller.log
+    # FIXME: checking exit code here is misleading/incorrect
+    Write-Host "Uninstall status: $lastExitCode"
 }
 
 Task Install10 {
-    Exec {
-        msiexec /q /L*v myInstaller.log /i myInstaller.msi
-        # FIXME: checking exit code here is misleading/incorrect
-        Write-Host "Install status: $lastExitCode"
-    }
+    msiexec /q /L*v myInstaller.log /i myInstaller.msi
+    # FIXME: checking exit code here is misleading/incorrect
+    Write-Host "Install status: $lastExitCode"
+
 }
 
 
