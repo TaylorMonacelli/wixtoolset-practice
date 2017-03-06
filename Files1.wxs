@@ -1,0 +1,15 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Wix xmlns="http://schemas.microsoft.com/wix/2006/wi">
+    <Fragment>
+        <DirectoryRef Id="INSTALLFOLDER">
+            <Component Id="cmpF55E4EEE704345F6AC69B0FF049CF470" Guid="*">
+                <File Id="fil3FC04902D8305F119CF03EB706863D2B" KeyPath="yes" Source="$(var.BuildDirectory)\myFile.txt" />
+            </Component>
+        </DirectoryRef>
+    </Fragment>
+    <Fragment>
+        <ComponentGroup Id="ProductComponents">
+            <ComponentRef Id="cmpF55E4EEE704345F6AC69B0FF049CF470" />
+        </ComponentGroup>
+    </Fragment>
+</Wix>

@@ -1,0 +1,15 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Wix xmlns="http://schemas.microsoft.com/wix/2006/wi">
+    <Fragment>
+        <DirectoryRef Id="TARGETDIR">
+            <Directory Id="dirCD76BE81BC12D7A8241159BE60A5F5EC" Name="wixtoolset-practice" />
+        </DirectoryRef>
+    </Fragment>
+    <Fragment>
+        <ComponentGroup Id="ProductComponents">
+            <Component Id="cmp55995BAED89F2CCF461C43A8A78A0841" Directory="dirCD76BE81BC12D7A8241159BE60A5F5EC" Guid="PUT-GUID-HERE">
+                <File Id="filAEFF669C024631E788584B64BD753E25" KeyPath="yes" Source="SourceDir\wixtoolset-practice\myFile.txt" />
+            </Component>
+        </ComponentGroup>
+    </Fragment>
+</Wix>
