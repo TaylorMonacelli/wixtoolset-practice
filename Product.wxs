@@ -5,7 +5,7 @@
     <Feature Id="ProductFeature" Level="1" Title="PUT-FEATURE-TITLE-HERE">
       <ComponentGroupRef Id="ProductComponents" />
     </Feature>
-    <MediaTemplate EmbedCab="yes" />
+    <MediaTemplate CompressionLevel="none" EmbedCab="yes" />
   </Product>
   <Fragment>
     <Directory Id="TARGETDIR" Name="SourceDir">
