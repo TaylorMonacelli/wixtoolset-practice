@@ -111,7 +111,7 @@ Task UnInstall10 {
 }
 
 Task Install10 {
-    msiexec /q /L*v myInstaller.log /i myInstaller.msi
+    cmd /c start /wait msiexec /q /L*v myInstaller.log /i myInstaller.msi
     # FIXME: checking exit code here is misleading/incorrect
     Write-Host "Install status: $lastExitCode"
 
